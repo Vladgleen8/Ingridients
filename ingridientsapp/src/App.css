@@ -1,41 +1,60 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+.App {
+  display: flex;
+  height: 100%;
+  /* overflow: hidden; */
+  height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.main {
+  overflow-y: auto;
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  font-size: 18px;
+  gap: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.sidebar {
+  background-color: gainsboro;
+  flex: 1;
+  width: 25%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-width: 200px; */
+  gap: 5px;
+}
+
+.sidebar_menu {
+  font-size: 22px;
+  text-transform: uppercase;
+  /* background-color: aliceblue; */
+  padding: 2px;
+    width: 100%;
+    padding-left: 50px;
+}
+
+.sidebar_menu:hover {
+  cursor: pointer;
+}
+
+.one_meal {
+  
+}
+
+
+/* @media (max-width: 500px) {
+  .app {
+    flex-direction: column-reverse;
   }
-  to {
-    transform: rotate(360deg);
+  aside {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+} */

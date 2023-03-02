@@ -1,34 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React, { useContext, useState } from 'react';
+import MealTypes from './MealTypes';
+import MealByType from './MealByType';
 import './App.css'
+import { MealContext, MealContextProvider } from "./MealContext";
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+    
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App">
+        <MealContextProvider>
+            <MealTypes/>
+            <MealByType />  
+        </MealContextProvider>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
   )
 }
 
 export default App
+
+  // react query, tan stack query 
+  // axios 
+  // zustand
+
+/*
+1. страница категоризации по времени приема пищи, завтра обед ужин и т.д. - нужно получить и отобразить разные приемы пищи 
+2. переход по 'завтраку' отркывает новое окно с блюдами которые обычно едят на завтрак - получить mealType и создать запрос на апи с данным параметром , отобразить название блюда и картинку,по клику строка расширяется и выскакивают ингридиенты 
+у каждого блюда есть кнопочка добавить, которая сохраняет блюдо в корзине 
+
+
+*/

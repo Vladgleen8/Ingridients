@@ -39,24 +39,21 @@ const IngridientsInput: FC<IngridientsInputProps> = ({recipe, setRecipe}) => {
 
     return(
         <div>
-            <FormControl>
-                <InputLabel>Ingridients</InputLabel>
-                <div>
-                    {ingridients.map((el: IIngridients) => {
-                        return( 
-                            <div>
-                                <OutlinedInput
-                                    style={{marginBottom: 20}}
-                                    label='Ingridients'
-                                    // key={uuidv4()}  
-                                    id={el.id}
-                                    value={el.val}
-                                    onChange={handleIngridientsChange}
-                                />
-                            </div>
-                    )})}
-                </div>
-            </FormControl>
+            {ingridients.map((el, i) => {
+                return( 
+                    <div key={i}>
+                        <FormControl>
+                            <InputLabel>Ingridients</InputLabel>
+                            <OutlinedInput
+                                style={{marginBottom: 20}}
+                                label='Ingridients'  
+                                id={el.id}
+                                value={el.val}
+                                onChange={handleIngridientsChange}
+                            />  
+                        </FormControl>
+                    </div>
+            )})}
             <div>
                 <Button type='button' variant="outlined" onClick={addIngridientsInput}>Add More</Button>
             </div>

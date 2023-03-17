@@ -1,18 +1,40 @@
-import React, { useContext, useState } from 'react';
-import MealTypes from './MealTypes';
-import MealByType from './MealByType';
+import { useState, useEffect } from 'react';
+import { Route, Routes} from 'react-router-dom';
+import MealPlan from './MealPlan';
+import Order from './Order';
+import NewRecipe from './NewRecipe';
+import NotFoundPage from './NotFoundPage';
+import Layout from './Layout';
+import { IRecipe } from "./models";
 import './App.css'
-import { MealContext, MealContextProvider } from "./MealContext";
+
 
 
 function App() {
+
+  const [recipes, setRecipes] = useState<IRecipe[]>([]);
+  
+  useEffect(() => {
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+  }, [recipes]);
+
+  useEffect(() => {
+    const recipes = JSON.parse(localStorage.getItem('recipes') || '');
+    if (recipes) {
+      setRecipes(recipes);
+    }
+  }, []);
     
   return (
       <div className="App">
-        <MealContextProvider>
-            <MealTypes/>
-            <MealByType />  
-        </MealContextProvider>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index path='/' element={<MealPlan recipes={recipes}/>} />
+            <Route path='order' element={<Order />}/>
+            <Route path='newrecipe' element={<NewRecipe recipes={recipes} setRecipes={setRecipes}/>}/>
+          <Route path='*' element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </div>
   )
 }
@@ -30,3 +52,12 @@ export default App
 
 
 */
+
+
+
+// ou should set type of setValue inside IDatePickerProps to:
+
+// setValue : React.Dispatch<React.SetStateAction<string>>
+// Or change setValue inside onChangeHandler to:
+
+// setValue: (value: string) => void;
